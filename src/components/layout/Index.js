@@ -1,22 +1,19 @@
-import React, { useState } from "react";
-import { connect, useDispatch } from "react-redux";
-import Sidebar from "./sidebar";
+import React from "react";
+import Sidebar from "./Sidebar";
+import { Outlet } from "react-router-dom"; 
 
-const Index = ({ children }) => {
+const MainLayout = () => {
   return (
-    <div>
+    <div className="flex">
+      {/* Sidebar */}
       <Sidebar />
-      <div className="main-content">{children}</div>
+
+      {/* Content */}
+      <div className="flex-1 p-6 bg-gray-100 min-h-screen">
+        <Outlet />
+      </div>
     </div>
   );
 };
 
-const mapStateToProps = ({}) => {
-  return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Index);
+export default MainLayout;
